@@ -71,6 +71,7 @@ type PersonExtract = Extract<Person, {nome: string}>; //extrai um campo
 
 type Pessoas = Record <string,Person>;
 
+//Forma de criar um objeto com chave string e valor do tipo Person unicamente
 const pessoas: Pessoas = {
 "123.456.123-00": {
 nome: "Mariana",
@@ -85,3 +86,62 @@ nacionalidade: "brasileira",
 
 }
 
+interface IPessoa {
+
+    nome: string;
+    idade: number;
+    altura: number;
+    peso: number;
+
+    dormir(): void;
+}
+
+//POO: Programação Orientada a Objetos EM TYPESCRIPT
+
+//CLASSE: abstração
+//Definindo a abstração de uma pessoa
+
+class Pessoa implements IPessoa {
+//Atributos: Características variáveis
+    nome: string;
+    idade: number;
+    altura: number;
+    peso: number;
+    readonly _cpf: string;
+//Métodos: Ação (funções)
+
+//Método Cosntrutor: é um método especial que é executado quando a classe é instanciada
+    constructor(nome: string, idade: number, altura: number, peso: number,cpf: string){
+        this.nome = nome;
+        this.idade = idade;
+        this.altura = altura;
+        this.peso= peso;
+        this._cpf= cpf;
+    }
+
+    dormir(){
+        console.log("Dormindo...");
+    }
+
+    //acessores: getters
+    get cpf():string {
+        return this._cpf;
+    }
+
+      //acessores: setters
+
+
+}
+
+//Criando/instanciando uma pessoa (Indivíduo/objeto)
+const pessoa1 = new Pessoa("Mariana", 23, 1.65, 65, "123.456.789-00");
+const pessoa2 = new Pessoa("Futebol", 23, 1.65, 65, "123.456.789-01");
+
+console.log(pessoa1);
+console.log(pessoa2);
+
+
+//Acessando atributos Ex: Nome
+console.log(pessoa1.nome);
+
+//Minuto 57:46
